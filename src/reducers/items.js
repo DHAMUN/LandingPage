@@ -41,14 +41,12 @@ const initialState = {
 export function items(state = initialState, action) {
   switch (action.type) {
   case 'ADD_ITEM':
-    return {
-      ...state,
-      items: [
-        ...state.items, {
-          text: action.fields.name.value,
-        },
-      ],
-    };
+    console.log(action);
+    return Object.assign({}, state, {items: [{
+      text: action.fields.name.value,
+      done: false,}
+    , ...state.items]
+  });
 
   case 'DELETE_ITEM':
     return {
