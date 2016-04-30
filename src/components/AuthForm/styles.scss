@@ -1,5 +1,111 @@
 :local(.styles) {
-  button {
-    margin-right: 10px;
+
+  padding-top: 20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  *{
+    font-family: Arial, sans-serif;  
+  }
+
+  .card{
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 100px;
+    }
+    
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);	
+  }
+
+  .form-group{
+  	display: block;
+  }
+    
+  .bottom{
+    margin-bottom: 30px;
+    }
+    
+  .top, .bottom{
+    position: relative;
+    justify-content: center;
+    height: 60px;  
+  }
+
+  .centerButton{
+    text-align: center;
+  } 
+
+  input{
+    display: block;
+    font-size: 15px;
+    border: none;
+    border-bottom: 1px solid #7f8c8d;
+    }
+
+input, .card, button{
+    animation: 2s fadein ease;
+  }
+
+  label{
+    animation: 2s fade ease;
+  }
+    
+  input:focus{
+    outline: none;
+  }
+    
+  label{
+    position: relative;
+    display: inline;
+    color: #7f8c8d;
+    font-family: sans-serif;
+    pointer-events: none;
+    top: -20px;
+    transition: 0.5s ease all;
+    }
+    
+  input:focus ~ label, input:valid ~ label{
+    position: relative;
+    top: -40px;
+    font-size: 12px;
+    color: #2980b9;
+    font-weight: bold;
+    }
+    
+  span{
+    position : relative;
+    width: 190px;
+    display: block;
+    height: 1px;
+    top: -1px;
+    }
+    
+  span::before, span::after{
+    display: block;
+    content : '';
+    background-color: #3498db;
+    width: 0;
+    height: 2px;
+    top: -20px;
+    left: 90px;
+    transition: 0.2s ease all;
+    } 
+    
+    
+  input:focus ~ span::before, input:focus span::after{
+    width: 100%;
+    top: 20px;
+  }
+
+  @keyframes fadein{
+    from {position: relative; opacity: 0; transform: translate3d(0px, 20px, 0px)};
+    to {position: relative; pacity: 1; transform: translate3d(0px, 0px, 0px)}
+  }
+
+  @keyframes fade{
+    from {opacity: 0;};
+    to {opacity: 1;}
   }
 }

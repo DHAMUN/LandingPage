@@ -20,7 +20,7 @@ export class AuthForm extends Component {
 
   constructor(props) {
     super(props);
-  }
+  } 
 
   onSubmit = (event) => {
     if (this.props.fields.username.value && this.props.fields.password.value) {
@@ -43,6 +43,7 @@ export class AuthForm extends Component {
     event.preventDefault();
   };
 
+
   render() {
     const {
       fields: { username, password },
@@ -54,31 +55,37 @@ export class AuthForm extends Component {
       );
     }
 
-
     return (
-      <form className={styles} onSubmit={this.onAdd}>
-        <div className="form-group">
+
+      <div className={styles}  >
+      <div className="card">
+      <form onSubmit={this.onAdd}>
+
+        <div className="top">
           <input
             type="text"
-            className="form-control"
-            placeholder="Username"
             {...username}
-          />
+          required></input>
+          <span></span>
+          <label>Username</label>
         </div>
-        <div className="form-group">
+        <div className="bottom">
           <input
             type="password"
-            className="form-control"
-            placeholder="Password"
             {...password}
-          />
+          required></input>
+          <span></span>
+          <label>Password</label>
         </div>
-        <div className="form-group">
+        <div className="centerButton">
           <button className="btn btn-default" onClick={(e) => this.onSubmit(e)} disabled={this.props.isAuthenticating} >
             {this.props.isLogin ? "Login" : "Sign Up"}
           </button>
         </div>
+        
       </form>
+      </div>
+      </div>
     );
   }
 }
