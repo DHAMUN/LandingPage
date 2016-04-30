@@ -20,23 +20,7 @@ export class AuthForm extends Component {
 
   constructor(props) {
     super(props);
-  }
-
-  handleInput(element){
-    console.log("Test");
-
-    const value = element.target.value;
-    const id = "test";
-
-    if(value != '' && id == "username")
-      this.setState({userCSSHandler : "hasInput"});
-    else if(value != '' && id == "password")
-      this.setState({passCSSHandler : "hasInput"});
-    else if (id == "username")
-      this.setState({userCSSHandler : "empty"});
-    else if (id == "password")
-      this.setState({passCSSHandler : "empty"});
-  }
+  } 
 
   onSubmit = (event) => {
     if (this.props.fields.username.value && this.props.fields.password.value) {
