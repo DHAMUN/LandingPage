@@ -39,6 +39,7 @@ export function auth(state = initialState, action) {
 
     case 'LOGOUT_USER' : 
       return Object.assign({}, state, {
+        'isAuthenticating': false,
         'isAuthenticated': false,
         'token': null,
         'userName': null,

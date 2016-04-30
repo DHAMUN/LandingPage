@@ -38,7 +38,7 @@ const initialState = {
   }],
 };
 
-export function items(state = initialState, action) {
+export default function items(state = initialState, action) {
   switch (action.type) {
   case 'ADD_ITEM':
     return Object.assign({}, state, {items: [{
