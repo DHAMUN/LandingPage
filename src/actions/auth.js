@@ -22,11 +22,16 @@ export function authSuccess (token) {
   }
 }
 
+export function logOut () {
+  hashHistory.push('/home');
+  return {
+    type: "LOGOUT_USER"
+  }
+}
+
 export function signIn (userData) {
   return function (dispatch) {
     dispatch(authRequest());
-
-    // Implement form checking here...
 
     request
       .post(SERVER_URL + '/api/users/signin')
@@ -39,5 +44,22 @@ export function signIn (userData) {
         }
       });
 
+  }
+}
+
+export function signUp (userData) {
+  return function (dispatch) {
+    dispatch(authRequest());
+
+    request
+      .post(SERVER_URL + '/api/users/signup')
+      .send(userData)
+      .end((err, res) => {
+        if (err || !res.ok) {
+          dispatch(authFailure(res.status, res.statusText));
+        } else {
+          dispatch(authSuccess(JSON.parse(res.text).token));
+        }
+      });
   }
 }
