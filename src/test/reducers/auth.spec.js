@@ -6,7 +6,7 @@ const initialState = {
   userName: null,
   isAuthenticated: false,
   isAuthenticating: false,
-  statusText: null
+  statusText: null 
 };
 
 describe('Auth reducer:', () => {
