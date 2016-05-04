@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { AuthForm } from 'components/AuthForm'
+import { LoginForm } from 'components/LoginForm'
 
 import DocumentMeta from 'react-document-meta';
 
@@ -24,10 +24,9 @@ const metaData = {
 
 @connect(
   (state) => ({
-    token: state.auth.token,
-    userName: state.auth.userName,
     isAuthenticated: state.auth.isAuthenticated,
-    isAuthenticating: state.auth.isAuthenticating
+    isAuthenticating: state.auth.isAuthenticating,
+    loginStatusText: state.auth.loginStatusText
   }),
   dispatch => bindActionCreators(actionCreators, dispatch)
 )
@@ -52,7 +51,7 @@ export class Login extends Component {
 
             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6
                             col-md-offset-3 col-lg-offset-3">
-              <AuthForm isLogin={true} {...this.props}/>
+              <LoginForm {...this.props}/>
             </div>
           </div>
         </div>

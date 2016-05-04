@@ -23,7 +23,7 @@ class HomeApp extends Component {
       <section>
         <Header 
           titleData={["DHAMUN", "/"]}
-          leftLinks={[["Home", "/home/"], ["Log In", "/home/login/"], ["Sign Up", "/home/signup/"]]} 
+          leftLinks={[["Home", "/home/"], ["Log In", "/home/login/"]]} 
           rightLink={["Dashboard", "/dashboard", true]} 
         />
         {this.props.children}
