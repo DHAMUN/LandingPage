@@ -6,7 +6,7 @@ const initialState = {
   userName: null,
   isAuthenticated: false,
   isAuthenticating: false,
-  statusText: null
+  statusText: null 
 };
 
 describe('Auth reducer:', () => {
@@ -17,10 +17,13 @@ describe('Auth reducer:', () => {
   });
 
   it('should handle a login user request', () => {
+    const initialState = {
+      isAuthenticating: false,
+      statusText: null
+    };
+
+
     const stateAfter = {
-      token: null,
-      userName: null,
-      isAuthenticated: false,
       isAuthenticating: true,
       statusText: null
     }
@@ -52,18 +55,39 @@ describe('Auth reducer:', () => {
 
   //Used Random token I found Online 
   it('should handle user login success', () => {
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJma' +
+        'XJzdE5hbWUiLCJsYXN0TmFtZSI6Imxhc3ROYW1lIiwiY29tbWl0dGVlIjoiY29tbWl0dGV'+
+        'lIiwidXNlckxldmVsIjoidXNlckxldmVsIiwic2Nob29sIjoic2Nob29sIn0.5Zkm' +
+        '5yaMi85kCiu6oBRZTaqhO0_pVPeAMK1q2C7ed7I';
+
+    const initState = {
+      token: null,
+      isAuthenticated: false,
+      isAuthenticating: false,
+      "firstName": null,
+      "lastName": null,
+      "committee": null,
+      "userLevel": null,
+      "school": null,
+      statusText: null
+    };
+
     const stateAfter = {
         'isAuthenticating': false,
         'isAuthenticated': true,
-        'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvaG4gRG9lIn0.-mwT8PGtVsO8mAaw6bbhMvHbte-NNd95a3CokY2QGR0',
-        'userName': "John Doe",
+        'token': token,
+        "firstName": "firstName",
+        "lastName": "lastName",
+        "committee": "committee",
+        "userLevel": "userLevel",
+        "school": "school",
         'statusText': 'You have been successfully logged in.'
     }
 
     expect(
-        auth(initialState, {
+        auth(initState, {
           type: 'LOGIN_USER_SUCCESS',
-          token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvaG4gRG9lIn0.-mwT8PGtVsO8mAaw6bbhMvHbte-NNd95a3CokY2QGR0'
+          token: token
         })
       ).toEqual(stateAfter);
 

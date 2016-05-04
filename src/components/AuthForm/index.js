@@ -10,6 +10,7 @@ import { styles } from './styles.scss';
 // Instead show a link to the dashboard (yay)
 
 export class AuthForm extends Component {
+ 
   static propTypes = {
     dispatch: React.PropTypes.func,
     fields: React.PropTypes.object.isRequired,
