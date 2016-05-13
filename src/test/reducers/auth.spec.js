@@ -1,4 +1,3 @@
-import expect from 'expect';
 import chai from 'chai';
 import { auth } from 'reducers/auth';
 
@@ -6,116 +5,112 @@ var assert = chai.assert;
 
 const initialState = {
   token: null,
-  userName: null,
+  email: null,
   isAuthenticated: false,
   isAuthenticating: false,
-  statusText: null 
+  loginStatusText: null,
+  signUpStatusText: null,
+  hasSignedUp: false,
+  committee: null,
+  firstName: null,
+  lastName: null,
+  school: null,
+  userLevel: null,
+  country: null,
+  partner: null
 };
 
-describe('Auth reducer:', () => {
-  it.only('should return the initial state', () => {
+describe('Authentication Reducers :' , function(){
 
-    const resultState = JSON.stringify(auth(initialState, {type : "Omar is a Jew :P"}));
+  it("Should return the same state", function(){
     const initState = JSON.stringify(initialState);
-    
-    assert.equal(initState, resultState);
-  });
+    const result = JSON.stringify(auth(initialState, {type: 'NOT_A_FUNCTION'}));
 
-  it.only('should handle a login user request', () => {
-    const initialState = {
-      isAuthenticating: false,
-      statusText: null
-    };
+    assert.equal(initState, result);
+  })
 
+  it("Should handle user login request", function(){
+
+    const stateAfter = JSON.stringify({'isAuthenticating': true});
+
+    const result = JSON.stringify(auth({}, {type: 'LOGIN_USER_REQUEST'}));
+
+    assert.equal(stateAfter, result);
+  })
+
+  it("Should handle user login failure", function(){
 
     const stateAfter = JSON.stringify({
-      isAuthenticating: true,
-      statusText: null
+      'isAuthenticating': false,
+      'isAuthenticated': false,
+      'token': null,
+      'loginStatusText': 'Authentication Error: 408 Timeout' 
     });
 
-    const finalState = JSON.stringify(auth(initialState, {type: "LOGIN_USER_REQUEST"}));
+    const result = JSON.stringify(auth({}, {type: 'LOGIN_USER_FAILURE', status : '408', statusText : 'Timeout'}));
 
-    assert.equal(finalState, stateAfter)
-  });
+    assert.equal(stateAfter, result);
 
-  it('should handle user login failure', () => {
-    const stateAfter = JSON.stringify({
-      token: null,
-      userName: null,
-      isAuthenticated: false,
-      isAuthenticating: false,
-      statusText: 'Authentication Error: 408 Request Timeout'
-    })
+  })
 
-    const finalState = JSON.stringify(auth(initialState, {
-      type: 'LOGIN_USER_FAILURE',
-      status : '408',
-      statusText : 'Request Timeout'
-    }));
-
-    assert.equal(finalState, stateAfter);
-  });
-
-  //Used Random token I found Online 
-  it('should handle user login success', () => {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJma' +
-    'XJzdE5hbWUiLCJsYXN0TmFtZSI6Imxhc3ROYW1lIiwiY29tbWl0dGVlIjoiY29tbWl0dGV'+
-    'lIiwidXNlckxldmVsIjoidXNlckxldmVsIiwic2Nob29sIjoic2Nob29sIn0.5Zkm' +
-    '5yaMi85kCiu6oBRZTaqhO0_pVPeAMK1q2C7ed7I';
-
-    const initState = {
-      token: null,
-      isAuthenticated: false,
-      isAuthenticating: false,
-      "firstName": null,
-      "lastName": null,
-      "committee": null,
-      "userLevel": null,
-      "school": null,
-      statusText: null
-    };
+  it("Should handle user login success", function(){
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJCcnVjZSIsImxhc3ROYW1lIjoiV2F5bmUiLCJjb21taXR0ZWUiOiJOYW4iLCJ1c2VyTGV2ZWwiOiJuYW4iLCJzY2hvb2wiOiJuYW4iLCJlbWFpbCI6Im5hbiIsImNvdW50cnkiOiJuYW4iLCJwYXJ0bmVyIjoiQmF0bWFuISJ9.mLiMAMX_4EpJVtmM9NAQgjcI_NyySS5VPJ8Px1Iss4Q';
 
     const stateAfter = JSON.stringify({
       'isAuthenticating': false,
       'isAuthenticated': true,
       'token': token,
-      "firstName": "firstName",
-      "lastName": "lastName",
-      "committee": "committee",
-      "userLevel": "userLevel",
-      "school": "school",
-      'statusText': 'You have been successfully logged in.'
+      "firstName": "Bruce",
+      "lastName": "Wayne",
+      "committee": "GA",
+      "userLevel": "69",
+      "school": "Some school",
+      "email": "wallah_not_batman@gmail.com",
+      "country": "USA",
+      "partner": "none",
+      'loginStatusText': 'You have been successfully logged in.'
     });
 
+    const result = JSON.stringify(auth({}, {type: 'LOGIN_USER_SUCCESS', token : token}));
 
-    const resultState = JSON.stringify(auth(initState, {
-      type: 'LOGIN_USER_SUCCESS',
-      token: token
-    }));
+  })
 
-    assert.expect(stateAfter, resultState);
-  });
-
-  it('should handle logging a user out', () => {
-    const initialState = {
-      token: null,
-      userName: null,
-      isAuthenticated: false,
-      statusText: null
-    };
-
-
-    const stateAfter = JSON.stringify({
+  it("Should handle sign up success", function(){
+    const stateAfter =  JSON.stringify({
+      'isAuthenticating': false,
       'isAuthenticated': false,
       'token': null,
-      'userName': null,
-      'statusText': 'You have been successfully logged out.'
+      'hasSignedUp': true,
+      'signUpStatusText': 'You have validated your account. You can sign up now!'
     });
 
-    const finalState = JSON.stringify(auth(initialState, {
-      type : 'LOGOUT_USER'
-    }));
+    const result = JSON.stringify(auth({}, {type : 'SIGNUP_USER_SUCCESS'}));
 
-    assert.expect(finalState, stateAfter);
+    assert.equal(stateAfter, result);
   })
+
+
+  it("Should handle sign up failure", function(){
+    const stateAfter = JSON.stringify({
+      'isAuthenticating': false,
+      'isAuthenticated': false,
+      'token': null,
+      'hasSignedUp': false,
+      'signUpStatusText': 'Authentication Error: 400 Bad Request'
+    });
+
+    const result = JSON.stringify(auth({}, {type : 'SIGNUP_USER_FAILURE', status : '400', statusText : 'Bad Request'}));
+
+    assert.equal(result, stateAfter);
+  })
+
+  it("Should handle user logout", function(){
+
+    const stateAfter = JSON.stringify(initialState);
+
+    const result = JSON.stringify(auth({}, {type : 'LOGOUT_USER'}));
+
+    assert.equal(stateAfter, result);
+  })
+
 });
