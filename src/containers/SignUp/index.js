@@ -44,8 +44,15 @@ export class SignUp extends Component {
           <div className="row">
             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6
                             col-md-offset-3 col-lg-offset-3">
+<<<<<<< HEAD
               <h1>
                 Sign Up
+=======
+              <h1 style={{
+                textAlign : "center",
+              }}>
+                Sign up
+>>>>>>> cbed78a31887a202a3ef5759fda1c9b1da73ff93
               </h1>
             </div>
 
