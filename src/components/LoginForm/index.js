@@ -20,7 +20,7 @@ export class LoginForm extends Component {
 
   constructor(props) {
     super(props);
-  }
+  } 
 
   onSubmit = (event) => {
     event.preventDefault();
@@ -37,6 +37,7 @@ export class LoginForm extends Component {
 
   };
 
+
   render() {
     const {
       fields: { email, password },
@@ -49,7 +50,6 @@ export class LoginForm extends Component {
         );
       }
     }
-
 
     return (
 
@@ -75,7 +75,9 @@ export class LoginForm extends Component {
             Login
           </button>
         </div>
+        
       </form>
+      </div>
     );
   }
 }

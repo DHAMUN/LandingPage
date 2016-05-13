@@ -38,17 +38,14 @@ const initialState = {
   }],
 };
 
-export function items(state = initialState, action) {
+export default function items(state = initialState, action) {
   switch (action.type) {
   case 'ADD_ITEM':
-    return {
-      ...state,
-      items: [
-        ...state.items, {
-          text: action.fields.name.value,
-        },
-      ],
-    };
+    return Object.assign({}, state, {items: [{
+      text: action.fields.name.value,
+      done: false,}
+    , ...state.items]
+  });
 
   case 'DELETE_ITEM':
     return {

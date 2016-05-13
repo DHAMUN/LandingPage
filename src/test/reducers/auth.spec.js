@@ -89,7 +89,6 @@ describe('Authentication Reducers :' , function(){
     assert.equal(stateAfter, result);
   })
 
-
   it("Should handle sign up failure", function(){
     const stateAfter = JSON.stringify({
       'isAuthenticating': false,
