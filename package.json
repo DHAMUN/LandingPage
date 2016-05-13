@@ -101,10 +101,17 @@
     "jwt-decode": "^2.0.1",
     "karma-chai": "^0.1.0",
     "karma-mocha": "^1.0.1",
+    "chart.js": "^1.1.1",
+    "jquery": "^2.2.0",
+    "jwt-decode": "^2.0.1",
     "react": "^15.0.2",
+    "react-chartjs": "^0.7.3",
+    "react-dom": "^15.0.2",
     "react-redux": "^4.0.6",
     "react-router": "^2.3.0",
     "redux": "^3.1.4",
+    "redux-persist": "^3.0.3",
+    "socket.io-client": "^1.4.6",
     "superagent": "^1.8.3"
   }
 }
