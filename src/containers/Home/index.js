@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DocumentMeta from 'react-document-meta';
+import {connect} from 'react-redux'
 
 /* components */
 import { TopImage } from 'components/TopImage';
@@ -17,8 +18,11 @@ const metaData = {
   },
 };
 
-export class Home extends Component {
+class Home extends Component {
   render() {
+
+    window.stuff = this.props;
+
     return (
       <section>
         <DocumentMeta {...metaData} />
