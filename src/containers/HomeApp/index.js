@@ -14,8 +14,6 @@ export class HomeApp extends Component {
 
   render() {
 
-    window.stuff = this;
-
     return (
       <section>
         <Header 
