@@ -1,10 +1,9 @@
-:local(.styles) {
-
-  padding-top: 20px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  *{
-    font-family: Arial, sans-serif;  
-  }
+ :local(.styles) {
+   button {
+     margin-right: 10px;
+   }
+  
+   .error-text {
+     color: #ff0000;
+   }
+ }

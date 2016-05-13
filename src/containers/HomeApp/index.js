@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import actions from "actions/auth";
-import {connect} from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 /* global styles for app */
 import './styles/homeapp.scss';
@@ -10,7 +7,7 @@ import './styles/homeapp.scss';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
 
-class HomeApp extends Component {
+export class HomeApp extends Component {
   static propTypes = {
     children: React.PropTypes.any,
   };
@@ -32,17 +29,3 @@ class HomeApp extends Component {
     );
   }
 }
-
-function mapStateToProps(state){
-  return state;
-}
-
-function mapActionsToProps(dispatch){
-  cons
-
-  return{
-    actions: bindActionCreators(actions, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapActionsToProps)(HomeApp)

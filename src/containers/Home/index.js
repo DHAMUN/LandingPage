@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import DocumentMeta from 'react-document-meta';
-import {connect} from 'react-redux'
-
 /* components */
 import { TopImage } from 'components/TopImage';
 import { Tools } from 'components/Tools';
@@ -18,10 +16,8 @@ const metaData = {
   },
 };
 
-class Home extends Component {
+export class Home extends Component {
   render() {
-
-    window.stuff = this.props;
 
     return (
       <section>
