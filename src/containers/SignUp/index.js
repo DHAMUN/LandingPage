@@ -46,8 +46,6 @@ export class SignUp extends Component {
                             col-md-offset-3 col-lg-offset-3">
               <h1>
                 Sign Up
-              <h1>
-                Sign up
               </h1>
             </div>
 
