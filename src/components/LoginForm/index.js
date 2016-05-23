@@ -17,7 +17,7 @@ export class LoginForm extends Component {
 
   constructor(props) {
     super(props);
-  }
+  } 
 
   onSubmit = (event) => {
     event.preventDefault();
@@ -33,6 +33,7 @@ export class LoginForm extends Component {
     this.props.dispatch(reset('loginForm'));
 
   };
+
 
   render() {
     const {
@@ -54,7 +55,6 @@ export class LoginForm extends Component {
 
       }
     }
-
 
     return (
 
@@ -80,6 +80,7 @@ export class LoginForm extends Component {
             Login
           </button>
         </div>
+        
       </form>
     );
   }

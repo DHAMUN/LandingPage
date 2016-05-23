@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import DocumentMeta from 'react-document-meta';
-
 /* components */
 import { TopImage } from 'components/TopImage';
 import { Tools } from 'components/Tools';
@@ -19,6 +18,7 @@ const metaData = {
 
 export class Home extends Component {
   render() {
+
     return (
       <section>
         <DocumentMeta {...metaData} />
